@@ -7,7 +7,7 @@ const Header: React.FC<PropsWithChildren> = () => {
   return (
     <div>
       <Navbar />
-      <div className='flex py-4  px-6 bg-stone-200 dark:bg-stone-700'>
+      <div className='flex py-4 shadow-md  px-6 bg-stone-200 dark:bg-vulcan-700'>
         <SearchBar />
         <AuthButtons />
       </div>

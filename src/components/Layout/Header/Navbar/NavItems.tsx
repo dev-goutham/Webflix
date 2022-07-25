@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const NavItems: React.FC = () => {
   return (
-    <div className='flex text-2xl dark:text-stone-100 text-stone-800 md:flex-col gap-8 md:gap-12'>
+    <div className='flex text-2xl dark:text-vulcan-100 text-stone-800 md:flex-col gap-8 md:gap-12'>
       <Link to='/movies'>
         <TbMovie />
       </Link>

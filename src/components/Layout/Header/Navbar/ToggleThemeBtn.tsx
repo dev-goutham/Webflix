@@ -6,7 +6,7 @@ const ToggleThemeBtn: React.FC = () => {
   return (
     <button
       onClick={() => toggleTheme()}
-      className='dark:text-stone-100 text-stone-800 text-2xl'
+      className='dark:text-vulcan-100 text-stone-800 text-2xl'
     >
       {theme === 'dark' ? <MdBrightness5 /> : <MdBrightness4 />}
     </button>
