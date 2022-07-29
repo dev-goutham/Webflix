@@ -3,7 +3,7 @@ const AuthButtons: React.FC = () => {
   return (
     <div>
       {!isAuthenticated ? (
-        <button className='dark:bg-jacarta-400 bg-jacarta-800 px-4 py-1 text-white rounded-md'>
+        <button className='dark:bg-jacarta-200 bg-jacarta-800 px-4 py-1 dark:text-jacarta-800 text-white rounded-md'>
           Log In
         </button>
       ) : (
