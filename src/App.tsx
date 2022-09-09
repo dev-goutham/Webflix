@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
 import NotFound from '@/pages/_404';
 import Layout from '@/components/Layout';
 import Home from './pages/Home';
