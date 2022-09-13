@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
+    fontFamily: {
+      sans: ['Outfit', 'sans-serif'],
+    },
     extend: {
       colors: {
         vulcan: {
@@ -31,7 +34,20 @@ module.exports = {
           900: '#131131',
         },
       },
+      animation: {
+        fade: 'fadein 800ms ease-in',
+      },
+      keyframes: {
+        fadein: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line no-undef
+  plugins: [require('tailwind-scrollbar')],
+  variants: {
+    scrollbar: ['rounded'],
+  },
 };

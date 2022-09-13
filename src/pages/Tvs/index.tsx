@@ -2,9 +2,9 @@ import GenresSection from '@/sections/GenresSection';
 import useScrollToTop from '@/hooks/useScrollToTop';
 import React, { PropsWithChildren } from 'react';
 
-const MoviesPage: React.FC<PropsWithChildren> = () => {
+const TvPage: React.FC<PropsWithChildren> = () => {
   useScrollToTop();
-  return <GenresSection type='movie' />;
+  return <GenresSection type='tv' />;
 };
 
-export default MoviesPage;
+export default TvPage;

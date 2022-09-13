@@ -13,4 +13,15 @@ export default defineConfig({
       REACT_APP_TMDB_API_KEY: process.env.REACT_APP_TMDB_API_KEY,
     },
   },
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://localhost:9999/.netlify/functions',
+  //       changeOrigin: true,
+  //       secure: false,
+  //       ws: true,
+  //       rewrite: (path) => path.replace(/^\/api/, ''),
+  //     },
+  //   },
+  // },
 });
