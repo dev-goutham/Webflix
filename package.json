@@ -11,13 +11,19 @@
     "lint": "eslint --ignore-path ./.gitignore --ext js,jsx,ts,tsx --fix"
   },
   "dependencies": {
+    "@netlify/functions": "^1.2.0",
+    "axios": "^0.27.2",
+    "query-string": "^7.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-loading-skeleton": "^3.1.0",
     "react-query": "^3.39.2",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "tailwind-scrollbar": "^2.0.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/react-icons": "^3.0.0",
