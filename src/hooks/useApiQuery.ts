@@ -25,8 +25,9 @@ const useApiQuery = <T>({
     //   return result;
     // },
     async () => {
-      const result = (await axios.get(`/pass-query?path=${path}&${query}`))
-        .data;
+      const result = (
+        await axios.get(`/.netlify/functions/pass-query?path=${path}&${query}`)
+      ).data;
       return result;
     },
     {
