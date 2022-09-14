@@ -11,6 +11,7 @@
     "lint": "eslint --ignore-path ./.gitignore --ext js,jsx,ts,tsx --fix"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.11.0",
     "@netlify/functions": "^1.2.0",
     "axios": "^0.27.2",
     "query-string": "^7.1.1",
