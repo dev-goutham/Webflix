@@ -6,7 +6,10 @@ const CardSkeleton: React.FC<PropsWithChildren> = () => {
   return (
     <div>
       <SkeletonTheme baseColor='#c6c6c6' highlightColor='#ffffff'>
-        <Skeleton className='rounded-md mb-4' width={420} height={230} />
+        <Skeleton
+          inline
+          className='mb-4 w-[260px] h-[160px] md:h-[230px] rounded-lg  md:w-[420px]'
+        />
       </SkeletonTheme>
     </div>
   );
