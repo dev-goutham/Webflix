@@ -24,20 +24,20 @@ const CardComponent: React.FC<Props> = ({ item }) => {
   return (
     <Link
       to={`/${isMovie(item) ? 'movie' : 'tv'}/${item.id}`}
-      className='rounded-md'
+      className='rounded-md  w-[180px] md:w-[210px]  lg:w-[290px] '
     >
       {isLoaded ? (
         <div
           style={{
             backgroundImage: `url(${imageUrl})`,
           }}
-          className='h-[230px] rounded-lg flex items-end w-[210px] md:w-[290px] md:h-[250px] relative bg-no-repeat bg-cover animate-fade'
+          className='h-[200px] rounded-lg flex items-end w-[180px] md:w-[210px] md:h-[230px] lg:w-[290px] lg-h-[250px] relative bg-no-repeat bg-cover animate-fade'
         />
       ) : (
         <div>
           <SkeletonTheme baseColor='#c6c6c6' highlightColor='#ffffff'>
             <Skeleton
-              className='h-[230px] rounded-lg flex items-end w-[210px] md:w-[290px] md:h-[250px] relative bg-no-repeat bg-cover'
+              className='h-[200px] rounded-lg flex items-end w-[180px] md:w-[210px] md:h-[230px] lg:w-[290px] lg-h-[250px] relative bg-no-repeat bg-cover animate-fade'
               inline
             />
           </SkeletonTheme>
