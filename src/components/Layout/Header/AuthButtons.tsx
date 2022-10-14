@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
-import { useAuth0, User } from '@auth0/auth0-react';
+import { User } from '@auth0/auth0-react';
+import { useAuth } from '@/hooks/useAuth';
 
 const AuthButtons: React.FC = () => {
-  const { isAuthenticated, loginWithPopup, user, logout } = useAuth0();
+  const { isAuthenticated, login, user, logout } = useAuth();
   return (
     <div className='mr-6'>
       {!isAuthenticated ? (
         <button
-          onClick={() => loginWithPopup()}
-          className='dark:bg-teal-800  px-4 py-1  text-white rounded-md'
+          onClick={() => login()}
+          className='flex items-center h-[48px] rounded-md bg-blue-500'
         >
-          Log In With Google
+          <div className='bg-white h-[48px] w-[48px] rounded-l-md p-2'>
+            <img
+              src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
+              alt='google login'
+              className='h-full w-full inline-block'
+            />
+          </div>
+          <span className='bg-blue-500 px-4 font-bold rounded-r-sm inline-block'>
+            Login With Google
+          </span>
         </button>
       ) : user ? (
         <Avatar user={user} logout={logout} />
@@ -33,7 +43,11 @@ const Avatar: React.FC<{ user: User; logout: () => void }> = ({
           setIsOpen((prev) => !prev);
         }}
       >
-        <img className='w-8 h-8 rounded-full' src={user.picture} />
+        <img
+          referrerPolicy='no-referrer'
+          className='w-8 h-8 rounded-full'
+          src={user.picture}
+        />
       </button>
       <button
         className={`absolute  ${
