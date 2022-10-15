@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     isAuthenticated,
     user,
     isLoading,
-    logout,
+    logout: auth0Logout,
     loginWithPopup,
     getAccessTokenSilently,
     // getAccessTokenWithPopup,
@@ -70,6 +70,12 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const logout = async () => {
+    await auth0Logout({
+      returnTo: window.location.origin,
+    });
   };
 
   return (
