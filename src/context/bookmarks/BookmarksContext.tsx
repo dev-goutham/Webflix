@@ -48,7 +48,7 @@ const BookmarksProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const { mutate: addBookmarks } = useMutation(
     (bookmark: BookmarkDto) => {
-      return axios.post(`/api/.netlify/functions/add-bookmark`, bookmark, {
+      return axios.post(`/.netlify/functions/add-bookmark`, bookmark, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
