@@ -1,27 +1,14 @@
 import React, { useState } from 'react';
 import { User } from '@auth0/auth0-react';
 import { useAuth } from '@/hooks/useAuth';
+import LoginButton from '@/components/LoginButton';
 
 const AuthButtons: React.FC = () => {
-  const { isAuthenticated, login, user, logout } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
   return (
     <div className='mr-6'>
       {!isAuthenticated ? (
-        <button
-          onClick={() => login()}
-          className='flex items-center h-[48px] rounded-md bg-blue-500'
-        >
-          <div className='bg-white h-[48px] w-[48px] rounded-l-md p-2'>
-            <img
-              src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
-              alt='google login'
-              className='h-full w-full inline-block'
-            />
-          </div>
-          <span className='bg-blue-500 px-4 font-bold rounded-r-sm inline-block'>
-            Login With Google
-          </span>
-        </button>
+        <LoginButton />
       ) : user ? (
         <Avatar user={user} logout={logout} />
       ) : (
