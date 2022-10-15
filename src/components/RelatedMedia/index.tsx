@@ -20,7 +20,8 @@ const RelatedMedia: React.FC<{ type: 'movie' | 'tv'; id: number }> = ({
       {data && (
         <>
           <h4 className='text-xl text-gray-600'>You Might also like</h4>
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9'>
+          <div className='flex flex-wrap md:max-w-[calc(100vw-116px)] gap-9'>
+            {/* <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9'> */}
             {data.results.map((item) => (
               <CardComponent key={item.id} item={item} />
             ))}
