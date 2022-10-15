@@ -4,7 +4,7 @@ import connectToDb from '../lib/faunadb';
 
 const {
   client,
-  query: { Select, Get, Match, Index },
+  query: { Select, Get, Match, Create, Collection, Index },
 } = connectToDb();
 
 export const handler = verifyJwt(async (event: HandlerEvent, context) => {
@@ -14,22 +14,24 @@ export const handler = verifyJwt(async (event: HandlerEvent, context) => {
   const id = sub.split('|')[1];
 
   try {
-    // const res = await client.query(
-    //   Let(
-    //     {
-    //       ref: Select('ref', Get(Match(Index('get_user_by_id'), id))),
-    //       array: Select(
-    //         ['data', 'bookmarks'],
-    //         Get(Match(Index('get_user_by_id'), id)),
-    //       ),
-    //     },
-    //     Update(Var('ref'), {
-    //       data: {
-    //         bookmarks: Append([2], Var('array')),
-    //       },
-    //     }),
-    //   ),
-    // );
+    await client.query(Get(Match(Index('get_user_by_id'), id)));
+  } catch (error) {
+    if (error.message === 'instance not found') {
+      await client.query(
+        Create(Collection('users'), {
+          data: {
+            id,
+            bookmarks: {
+              movies: [],
+              tv: [],
+            },
+          },
+        }),
+      );
+    }
+  }
+
+  try {
     const res = await client.query(
       Select(['data', 'bookmarks'], Get(Match(Index('get_user_by_id'), id))),
     );
@@ -41,7 +43,10 @@ export const handler = verifyJwt(async (event: HandlerEvent, context) => {
     if (error.message === 'instance not found') {
       return {
         statusCode: 200,
-        body: JSON.stringify([]),
+        body: JSON.stringify({
+          movies: [],
+          tv: [],
+        }),
       };
     } else {
       return {

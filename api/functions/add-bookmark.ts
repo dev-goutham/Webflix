@@ -4,19 +4,29 @@ import connectToDb from '../lib/faunadb';
 
 const {
   client,
-  query: { Let, Select, Update, Var, Append, Get, Match, Index },
+  query: {
+    Let,
+    Select,
+    Update,
+    Var,
+    Append,
+    Get,
+    Collection,
+    Create,
+    Match,
+    Index,
+  },
 } = connectToDb();
 
 export const handler = verifyJwt(async (event: HandlerEvent, context) => {
   const {
     claims: { sub },
   } = context.identityContext;
-  const id = sub.split('|')[1];
+  const id = sub.split('|')[1] as string;
   const body = JSON.parse(event.body as string) as {
     id: number;
     type: 'movies' | 'tv';
   };
-  console.log({ body, id });
 
   if (!body?.id || !body?.type) {
     return {
@@ -38,6 +48,26 @@ export const handler = verifyJwt(async (event: HandlerEvent, context) => {
     query = {
       tv: Append([body.id], Var('array')),
     };
+  }
+
+  try {
+    const user = await client.query(Get(Match(Index('get_user_by_id'), id)));
+    console.log(user);
+  } catch (error) {
+    if (error.message === 'instance not found') {
+      const res = await client.query(
+        Create(Collection('users'), {
+          data: {
+            id,
+            bookmarks: {
+              movies: [],
+              tv: [],
+            },
+          },
+        }),
+      );
+      console.log(res);
+    }
   }
 
   try {
