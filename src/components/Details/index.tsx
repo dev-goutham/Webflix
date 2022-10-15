@@ -3,10 +3,13 @@ import isMovieExtended from '@/utils/isMovieExtended';
 import { IMovieExtended } from 'typings/IMovieExtended';
 import { ITvExtended } from 'typings/ITExtended';
 import Rating from './Rating';
+import BookmarkComponent from '../BookmarkComponent';
 
 const Details: React.FC<{ item: IMovieExtended | ITvExtended }> = ({
   item,
 }) => {
+  const isMovie = isMovieExtended(item);
+
   const tagLine = item.tagline;
   const language = item.spoken_languages[0]?.english_name || 'English';
   const status = item.status;
@@ -16,7 +19,7 @@ const Details: React.FC<{ item: IMovieExtended | ITvExtended }> = ({
   let title: string;
   let length: number | undefined;
   let releaseDate: string;
-  if (isMovieExtended(item)) {
+  if (isMovie) {
     title = item.title;
     length = item.runtime;
     releaseDate = item.release_date;
@@ -28,8 +31,9 @@ const Details: React.FC<{ item: IMovieExtended | ITvExtended }> = ({
 
   return (
     <div className='md:ml-16 mt-4 md:mt-0 w-3/4 space-y-6'>
-      <div className='flex gap-4'>
+      <div className='flex  items-center justify-between'>
         <h2 className='text-4xl  md:text-left'>{title}</h2>
+        <BookmarkComponent id={item.id} type={isMovie ? 'movies' : 'tv'} />
       </div>
       <h4 className='text-xl font-thin text-gray-400'>{tagLine}</h4>
       <div className='flex justify-center md:justify-start'>

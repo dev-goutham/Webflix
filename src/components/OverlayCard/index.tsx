@@ -1,6 +1,7 @@
 import React from 'react';
 import { TbMovie } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
+import BookmarkComponent from '../BookmarkComponent';
 
 interface Props {
   id: string | number;
@@ -12,14 +13,20 @@ interface Props {
 
 const OverlayCard: React.FC<Props> = ({ id, imageUrl, title, type, year }) => {
   return (
-    <Link to={`/${type}/${id}`}>
-      <div
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(${imageUrl})`,
-        }}
-        className='w-[260px] h-[160px] md:h-[230px] rounded-lg flex p-6 items-end md:w-[420px] relative bg-no-repeat bg-cover'
-      >
-        <div>
+    <div
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(${imageUrl})`,
+      }}
+      className='w-[260px] h-[160px] md:h-[230px] rounded-lg flex p-6 items-end md:w-[420px] relative bg-no-repeat bg-cover'
+    >
+      <div className='absolute top-4 right-4'>
+        <BookmarkComponent
+          id={id as number}
+          type={type === 'movie' ? 'movies' : 'tv'}
+        />
+      </div>
+      <div>
+        <Link to={`/${type}/${id}`}>
           <div className='flex gap-2'>
             <span>{year.split('-')[0]} &#183; </span>
             <span className='flex items-center gap-1'>
@@ -30,9 +37,9 @@ const OverlayCard: React.FC<Props> = ({ id, imageUrl, title, type, year }) => {
             </span>
           </div>
           <div className='text-xl font-bold tracking-wide'>{title}</div>
-        </div>
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 };
 

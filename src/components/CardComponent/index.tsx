@@ -6,6 +6,7 @@ import { IMovie } from 'typings/Movie';
 import { ITv } from 'typings/Tv';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import useIsImageLoaded from '@/hooks/useIsImageLoaded';
+import BookmarkComponent from '../BookmarkComponent';
 
 type Props = PropsWithChildren & {
   item: IMovie | ITv;
@@ -22,17 +23,21 @@ const CardComponent: React.FC<Props> = ({ item }) => {
   const isLoaded = useIsImageLoaded(imageUrl);
 
   return (
-    <Link
-      to={`/${isMovie(item) ? 'movie' : 'tv'}/${item.id}`}
-      className='rounded-md  w-[180px] md:w-[210px]  lg:w-[290px] '
-    >
+    <div className='rounded-md relative w-[180px] md:w-[210px]  lg:w-[290px] '>
       {isLoaded ? (
         <div
           style={{
             backgroundImage: `url(${imageUrl})`,
           }}
           className='h-[200px] rounded-lg flex items-end w-[180px] md:w-[210px] md:h-[230px] lg:w-[290px] lg-h-[250px] relative bg-no-repeat bg-cover animate-fade'
-        />
+        >
+          <div className='absolute top-4 right-4'>
+            <BookmarkComponent
+              id={item.id}
+              type={isMovie(item) ? 'movies' : 'tv'}
+            />
+          </div>
+        </div>
       ) : (
         <div>
           <SkeletonTheme baseColor='#c6c6c6' highlightColor='#ffffff'>
@@ -76,8 +81,10 @@ const CardComponent: React.FC<Props> = ({ item }) => {
           )}
         </div>
       </div>
-      <p className='text-xl'>{isMovie(item) ? item.title : item.name}</p>
-    </Link>
+      <Link to={`/${isMovie(item) ? 'movie' : 'tv'}/${item.id}`}>
+        <p className='text-xl'>{isMovie(item) ? item.title : item.name}</p>
+      </Link>
+    </div>
   );
 };
 

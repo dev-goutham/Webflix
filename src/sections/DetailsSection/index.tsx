@@ -32,7 +32,7 @@ const DetailsSkeleton: React.FC = () => {
 const DetailsSection: React.FC<Props> = ({ id, type }) => {
   const { data: item, isLoading } = useApiQuery<IMovieExtended | ITvExtended>({
     path: `${type}/${id}`,
-    tags: ['Movie', id],
+    tags: [type, id],
   });
 
   return (

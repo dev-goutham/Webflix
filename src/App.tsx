@@ -14,33 +14,38 @@ import MoviesQuery from './pages/MoviesQuery';
 import TvQuery from './pages/TvQuery';
 import GenreListingSection from './sections/GenreListingsSection';
 import Actor from './pages/Actor';
+import BookmarksProvider from './context/bookmarks/BookmarksContext';
+import Bookmarks from './pages/Bookmarks';
 
 const queryClient = new QueryClient();
 
 const App: React.FC<PropsWithChildren> = () => (
   <QueryClientProvider client={queryClient}>
-    <Layout>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/search/:query' element={<SearchResults />} />
-        <Route path='/movies' element={<MoviesPage />} />
-        <Route path='/movies/:query' element={<MoviesQuery />} />
-        <Route
-          path='/movies/genre/:id'
-          element={<GenreListingSection type='movie' />}
-        />
-        <Route path='/movie/:id' element={<Movie />} />
-        <Route path='/television' element={<TvPage />} />
-        <Route path='/television/:query' element={<TvQuery />} />
-        <Route
-          path='/television/genre/:id'
-          element={<GenreListingSection type='tv' />}
-        />
-        <Route path='/tv/:id' element={<Tv />} />
-        <Route path='/actor/:id' element={<Actor />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </Layout>
+    <BookmarksProvider>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search/:query' element={<SearchResults />} />
+          <Route path='/movies' element={<MoviesPage />} />
+          <Route path='/movies/:query' element={<MoviesQuery />} />
+          <Route
+            path='/movies/genre/:id'
+            element={<GenreListingSection type='movie' />}
+          />
+          <Route path='/movie/:id' element={<Movie />} />
+          <Route path='/television' element={<TvPage />} />
+          <Route path='/bookmarks' element={<Bookmarks />} />
+          <Route path='/television/:query' element={<TvQuery />} />
+          <Route
+            path='/television/genre/:id'
+            element={<GenreListingSection type='tv' />}
+          />
+          <Route path='/tv/:id' element={<Tv />} />
+          <Route path='/actor/:id' element={<Actor />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </BookmarksProvider>
     <ReactQueryDevtools />
   </QueryClientProvider>
 );

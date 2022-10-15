@@ -8,17 +8,21 @@ export const handler = async (event: HandlerEvent, context: HandlerContext) => {
   } & unknown;
 
   let query = '';
-
   Object.keys(rest).forEach((key) => {
     query += `&${key}=${rest[key]}`;
   });
-
   const url = `https://api.themoviedb.org/3/${path}?api_key=${process.env.VITE_TMDB_API_KEY}${query}`;
-  const res = (await axios.get(url)).data;
-  console.log('res');
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify(res),
-  };
+  try {
+    const res = (await axios.get(url)).data;
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify(res),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+    };
+  }
 };

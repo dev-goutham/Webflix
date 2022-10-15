@@ -1,8 +1,10 @@
+import useBookmarks from '@/hooks/useBookmarks';
 import DisplaySection from '@/sections/DisplaySection';
 import HeroSection from '@/sections/HeroSection';
 import React, { PropsWithChildren } from 'react';
 
 const Home: React.FC<PropsWithChildren> = () => {
+  useBookmarks();
   return (
     <div>
       <HeroSection />
