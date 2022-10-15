@@ -75,7 +75,7 @@ const BookmarksProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const { mutate: removeBookmark } = useMutation(
     (bookmark: BookmarkDto) =>
-      axios.post<unknown>(`/api/.netlify/functions/remove-bookmark`, bookmark, {
+      axios.post<unknown>(`/.netlify/functions/remove-bookmark`, bookmark, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
