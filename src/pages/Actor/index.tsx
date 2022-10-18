@@ -8,6 +8,7 @@ import { IMovie } from 'typings/Movie';
 import { ITv } from 'typings/Tv';
 import CardComponent from '@/components/CardComponent';
 import useScrollToTop from '@/hooks/useScrollToTop';
+import Imdb from '@/components/ExternalIds/Imdb';
 
 const Actor: React.FC<PropsWithChildren> = () => {
   useScrollToTop();
@@ -43,14 +44,7 @@ const Actor: React.FC<PropsWithChildren> = () => {
               <p className='font-light tracking-wide leading-relaxed'>
                 {data.biography}
               </p>
-              <div>
-                <a
-                  target='blank'
-                  href={`https://www.imdb.com/name/${data.imdb_id}`}
-                >
-                  <FaImdb size={48} className='text-yellow-400' />
-                </a>
-              </div>
+              <Imdb imdbId={data.imdb_id} />
             </div>
           </div>
           <StarredIn actorId={data.id} />

@@ -83,4 +83,28 @@ export interface ITvExtended extends ITv {
   }[];
   tagline: string;
   type: string;
+  videos: {
+    results: {
+      iso_639_1: string;
+      iso_3166_1: string;
+      name: string;
+      key: string;
+      site: string;
+      size: number;
+      type: string;
+      official: boolean;
+      published_at: Date;
+      id: string;
+    }[];
+  };
+  external_ids: {
+    imdb_id: string;
+    freebase_mid: string;
+    freebase_id: string;
+    tvdb_id: number;
+    tvrage_id: number;
+    facebook_id: string;
+    instagram_id: string;
+    twitter_id: string;
+  };
 }
