@@ -73,7 +73,9 @@ const DetailsSection: React.FC<Props> = ({ id, type }) => {
               />
               <div className='flex mt-2 justify-between'>
                 <div className='flex gap-2'>
-                  <Imdb imdbId={item.external_ids.imdb_id} />
+                  {item.external_ids.imdb_id && (
+                    <Imdb imdbId={item.external_ids.imdb_id} />
+                  )}
                   {item.external_ids.facebook_id && (
                     <Facebook handle={item.external_ids.facebook_id} />
                   )}
