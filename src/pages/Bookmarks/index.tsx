@@ -66,6 +66,7 @@ const BookmarkCard: React.FC<{ id: number; type: 'movie' | 'tv' }> = ({
   const { data } = useApiQuery<IMovieExtended | ITvExtended>({
     path: `${type}/${id}`,
     tags: [type, `${id}`],
+    query: 'append_to_response=videos,external_ids',
   });
   const [title, setTitle] = useState('');
 
