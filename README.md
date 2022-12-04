@@ -1,5 +1,9 @@
 # Webflix
 
+
+https://user-images.githubusercontent.com/74486872/205487606-8cccfe81-8cf8-4358-8315-bf397cb29d3d.mp4
+
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -17,13 +21,13 @@ Webflix is a movie/tv browsing app where you can find details about your favouri
 
 ## Built With
 
-- Language: Typescript
-- Framework: React.js
-- Styling: TailwindCss
-- State Management: React-Query
-- Serverless Functions: Netlify
-- Database: FaunaDb
-- Authentication: Auth0
+- Language: `Typescript`
+- Framework: `React.js`
+- Styling: `TailwindCss`
+- State Management: `React-Query`
+- Serverless Functions: `Netlify`
+- Database: `FaunaDb`
+- Authentication: `Auth0`
 
 ---
 
