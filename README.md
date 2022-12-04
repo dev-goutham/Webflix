@@ -21,13 +21,13 @@ Webflix is a movie/tv browsing app where you can find details about your favouri
 
 ## Built With
 
-- Language: Typescript
-- Framework: React.js
-- Styling: TailwindCss
-- State Management: React-Query
-- Serverless Functions: Netlify
-- Database: FaunaDb
-- Authentication: Auth0
+- Language: `Typescript`
+- Framework: `React.js`
+- Styling: `TailwindCss`
+- State Management: `React-Query`
+- Serverless Functions: `Netlify`
+- Database: `FaunaDb`
+- Authentication: `Auth0`
 
 ---
 
