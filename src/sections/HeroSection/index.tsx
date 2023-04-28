@@ -1,38 +1,17 @@
 import useApiQuery from '@/hooks/useApiQuery';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import { IMovie } from 'typings/Movie';
 import { QueryResult } from 'typings/QueryResult';
 import HeroImage from '@/components/HeroImage';
 import HeroSkeleton from '@/components/HeroSkeleton';
+import Carousel, { ResponsiveType } from 'react-multi-carousel';
 
 const HeroSection: React.FC<PropsWithChildren> = () => {
   const { data, isLoading } = useApiQuery<QueryResult<IMovie>>({
     path: 'movie/now_playing',
     tags: ['movies', 'now_playing', '1'],
   });
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const onLeftButtonClick = () => {
-    setCurrentIndex((prev) => {
-      if (prev === 0) {
-        return 19;
-      } else {
-        return prev - 1;
-      }
-    });
-  };
-
-  const onRightButtonClick = () => {
-    setCurrentIndex((prev) => {
-      if (prev === 19) {
-        return 0;
-      } else {
-        return prev + 1;
-      }
-    });
-  };
 
   return (
     <div>
@@ -52,16 +31,30 @@ const HeroSection: React.FC<PropsWithChildren> = () => {
       </div>
       {data && (
         <div>
-          <HeroImage
-            onLeftButtonClick={onLeftButtonClick}
-            onRightButtonClick={onRightButtonClick}
-            movie={data.results[currentIndex]}
-            key={data.results[currentIndex].id}
-          />
+          <HeroCarousel movies={data.results} />
         </div>
       )}
       {isLoading && <HeroSkeleton />}
     </div>
+  );
+};
+
+const responsive: ResponsiveType = {
+  mobile: {
+    breakpoint: { max: 4000, min: 0 },
+    items: 1,
+  },
+};
+
+const HeroCarousel: React.FC<{ movies: IMovie[] }> = ({ movies }) => {
+  return (
+    <Carousel infinite ssr={true} responsive={responsive}>
+      {movies.map((movie) => (
+        <div key={movie.id}>
+          <HeroImage movie={movie} />
+        </div>
+      ))}
+    </Carousel>
   );
 };
 

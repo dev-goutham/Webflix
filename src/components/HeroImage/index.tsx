@@ -9,11 +9,7 @@ interface Props extends PropsWithChildren {
   onRightButtonClick: () => void;
 }
 
-const HeroImage: React.FC<Props> = ({
-  movie,
-  onLeftButtonClick,
-  onRightButtonClick,
-}) => {
+const HeroImage: React.FC<Props> = ({ movie }) => {
   return (
     <div className='animate-fade'>
       <div
@@ -22,20 +18,6 @@ const HeroImage: React.FC<Props> = ({
         }}
         className='w-full relative bg-cover rounded-md bg-center h-[400px] flex items-end md:h-[540px] p-14'
       >
-        <div className='absolute h-[28px] top-2/4 bottom-2/4 flex justify-between left-2 right-2'>
-          <button onClick={onLeftButtonClick}>
-            <AiFillLeftCircle
-              className='shadow-lg text-gray-300'
-              size={'32px'}
-            />
-          </button>
-          <button onClick={onRightButtonClick}>
-            <AiFillRightCircle
-              className='shadow-lg text-gray-300'
-              size={'32px'}
-            />
-          </button>
-        </div>
         <Link to={`/movie/${movie.id}`} className='lg:w-1/3'>
           <div className='font-bold text-xl mb-2'>{movie.title}</div>
           <div className='font-light text-gray-300'>{movie.overview}</div>
