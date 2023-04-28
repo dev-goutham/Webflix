@@ -17,7 +17,7 @@ const OverlayCard: React.FC<Props> = ({ id, imageUrl, title, type, year }) => {
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(${imageUrl})`,
       }}
-      className='w-[260px] h-[160px] md:h-[230px] rounded-lg flex p-6 items-end md:w-[420px] relative bg-no-repeat bg-cover'
+      className='h-[200px] md:h-[280px] rounded-lg flex p-6 items-end relative bg-no-repeat bg-cover'
     >
       <div className='absolute top-4 right-4'>
         <BookmarkComponent

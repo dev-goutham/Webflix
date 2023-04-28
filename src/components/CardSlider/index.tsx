@@ -13,7 +13,7 @@ const CardSlider: React.FC<Props> = ({ items }) => {
   return (
     <Slider>
       {items.map((item) => (
-        <div className='mb-4 snap-center' key={item.id}>
+        <div className='mb-4 mx-4' key={item.id}>
           <OverlayCard
             id={item.id}
             imageUrl={'http://image.tmdb.org/t/p/w500' + item.backdrop_path}
