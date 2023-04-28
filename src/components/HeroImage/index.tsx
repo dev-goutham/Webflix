@@ -1,12 +1,9 @@
 import React, { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import { IMovie } from 'typings/Movie';
-import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 
 interface Props extends PropsWithChildren {
   movie: IMovie;
-  onLeftButtonClick: () => void;
-  onRightButtonClick: () => void;
 }
 
 const HeroImage: React.FC<Props> = ({ movie }) => {
