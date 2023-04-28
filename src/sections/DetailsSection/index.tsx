@@ -29,7 +29,7 @@ const DetailsSkeleton: React.FC = () => {
         <Skeleton height={28} />
         <Skeleton height={36} />
         <Skeleton height={60} />
-        <Skeleton height={200} />
+        <Skeleton height={400} />
       </SkeletonTheme>
     </div>
   );
@@ -64,7 +64,7 @@ const DetailsSection: React.FC<Props> = ({ id, type }) => {
   return (
     <div>
       <div>
-        <div className='flex p-12 lg:flex-row flex-col items-center lg:items-start'>
+        <div className='flex py-12 gap-6  max-w-6xl mx-auto lg:flex-row flex-col items-center lg:items-start'>
           {item && !isLoading ? (
             <div>
               <Poster
@@ -102,17 +102,21 @@ const DetailsSection: React.FC<Props> = ({ id, type }) => {
           ) : (
             <PosterSkeleton />
           )}
-          <div>
+          <div className='max-w-[442px] md:max-w-[600px] mx-auto lg:max-w-[700px] overflow-hidden flex flex-col gap-8'>
             {item && !isLoading ? <Details item={item} /> : <DetailsSkeleton />}
-            <div className='md:ml-16 mt-8  max-w-[360px] md:max-w-[500px] lg:max-w-[850px]'>
-              {item && !isLoading && (
+            {/* <div className='md:ml-16 mt-8'> */}
+            {item && !isLoading && (
+              <div className='md:ml-16'>
+                <h4 className='text-gray-600 text-xl mb-2'>Top Cast</h4>
+
                 <Cast
                   id={item.id}
                   type={isMovieExtended(item) ? 'movie' : 'tv'}
                 />
-              )}
-            </div>
+              </div>
+            )}
           </div>
+          {/* </div> */}
         </div>
         {item && (
           <>

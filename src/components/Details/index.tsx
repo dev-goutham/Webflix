@@ -30,7 +30,7 @@ const Details: React.FC<{ item: IMovieExtended | ITvExtended }> = ({
   }
 
   return (
-    <div className='md:ml-16 mt-4 md:mt-0 w-3/4 space-y-6'>
+    <div className='md:ml-16 mt-4 md:mt-0 space-y-6'>
       <div className='flex  items-center justify-between'>
         <h2 className='text-4xl  md:text-left'>{title}</h2>
         <BookmarkComponent id={item.id} type={isMovie ? 'movies' : 'tv'} />

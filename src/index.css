@@ -14,10 +14,19 @@ html::-webkit-scrollbar {
 html::-webkit-scrollbar-thumb {
   /* background-color: #777;
   border-radius: 8px; */
-  @apply dark:bg-vulcan-400 rounded-md bg-slate-500
+  @apply dark:bg-vulcan-400 rounded-md bg-slate-500;
 }
 
 html::-webkit-scrollbar-track {
   /* background-color: #333; */
-  @apply dark:bg-vulcan-700 bg-slate-300
+  @apply dark:bg-vulcan-700 bg-slate-300;
+}
+
+.cast-item-container .react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+  top: 55px;
+  right: 0;
+}
+.cast-item-container .react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+  top: 55px;
+  left: -25px;
 }
